@@ -1,17 +1,76 @@
+<!-- Navbar goes here -->
 <nav>
   <div class="nav-wrapper blue-grey darken-4">
-    <a href="#!" class="brand-logo"><span style="margin-left: 20px;">Task Board</span></a>
-    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <a href="#!" class="brand-logo">
+      <span style="margin-left: 20px;">Task Board</span>
+    </a>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+      <i class="material-icons">menu</i>
+    </a>
     <ul class="right hide-on-med-and-down">
 
-      <li><a (click)="signOut()">Logout <i class="material-icons left">exit_to_app</i></a></li>
+      <li>
+        <a (click)="signOut()">Logout
+          <i class="material-icons left">exit_to_app</i>
+        </a>
+      </li>
     </ul>
   </div>
 </nav>
 
 <ul class="sidenav" id="mobile-demo">
-
-  <li><a (click)="signOut()">Logout</a></li>
+  <li>
+    <a (click)="signOut()">Logout</a>
+  </li>
 </ul>
-     
+
+ <!-- Page Layout here -->
+ <div class="row">
+
+  <div class="col s12 m3 l3 nav-sidebar"> <!-- Note that "m4 l3" was added -->
+    <!-- Grey navigation panel
+
+          This content will be:
+      3-columns-wide on large screens,
+      4-columns-wide on medium screens,
+      12-columns-wide on small screens  -->
+   
+      <ul class="collapsible">
+          <li>
+            <div class="collapsible-header">
+              <i class="material-icons">check_box</i>
+              Task List
+            </div>
+            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+          </li>
+          <li>
+            <div class="collapsible-header">
+              <i class="material-icons">person</i>
+              Users
+             </div>
+            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+          </li>
+          <li>
+              <div class="collapsible-header">
+                <i class="material-icons">settings</i>
+                Settings
+               </div>
+              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+            </li>
+        </ul>
       
+
+  </div>
+
+  <div class="col s12 m9 l9"> <!-- Note that "m8 l9" was added -->
+    <!-- Teal page content
+
+          This content will be:
+      9-columns-wide on large screens,
+      8-columns-wide on medium screens,
+      12-columns-wide on small screens  -->
+      Content
+
+  </div>
+
+</div>
