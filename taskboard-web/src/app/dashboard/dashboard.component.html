@@ -1,4 +1,17 @@
-<p>
-  dashboard works!
-</p>
-<a class="waves-effect waves-light btn" (click)="signOut()">signOut</a>
+<nav>
+  <div class="nav-wrapper blue-grey darken-4">
+    <a href="#!" class="brand-logo"><span style="margin-left: 20px;">Task Board</span></a>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+
+      <li><a (click)="signOut()">Logout <i class="material-icons left">exit_to_app</i></a></li>
+    </ul>
+  </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+
+  <li><a (click)="signOut()">Logout</a></li>
+</ul>
+     
+      
