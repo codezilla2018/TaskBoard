@@ -4,10 +4,13 @@ import * as firebase from 'firebase/app';
 import { Account } from '../models/ account/ account.interface';
 import { LoginResponse } from '../models/login/login-response.interface';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  token:string;
 
   constructor(public auth:AngularFireAuth) { }
 
@@ -22,6 +25,14 @@ export class AuthService {
 
   async signInWithEmailAndPassword(account:Account){
     try {
+       await this.auth.auth.signInWithEmailAndPassword(account.email,account.password)
+       .then(response =>{
+        this.auth.auth.currentUser.getIdToken()
+        .then(
+          (token:string)=> this.token=token
+        )
+       })
+
       return <LoginResponse>{
         result: await this.auth.auth.signInWithEmailAndPassword(account.email,account.password)
       }
@@ -43,5 +54,16 @@ export class AuthService {
       }
     }
   }
+
+getToken(){
+  this.auth.auth.currentUser.getIdToken().then(
+    (token:string)=>this.token =token
+  )
+  return this.token;
+}
+
+isAuthenticated(){
+  return this.token !=null;
+}
 
 }

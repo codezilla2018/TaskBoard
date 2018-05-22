@@ -16,11 +16,18 @@ import {AuthService} from './services/auth.service';
 import { AuthGuard} from './guards/auth.guard';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
+import { TaskListComponent } from './task-list/task-list.component';
+import { UsersComponent } from './users/users.component';
+import { SettingsComponent } from './settings/settings.component';
+import { PageStateService } from './services/page-state.service';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    TaskListComponent,
+    UsersComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +39,7 @@ import { RouterModule } from '@angular/router';
     routes,
     RouterModule
   ],
-  providers: [AuthGuard,AuthService],
+  providers: [AuthGuard,AuthService,PageStateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

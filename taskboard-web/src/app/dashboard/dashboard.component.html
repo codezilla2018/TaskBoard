@@ -24,52 +24,62 @@
   </li>
 </ul>
 
- <!-- Page Layout here -->
- <div class="row">
+<!-- Page Layout here -->
+<div class="row">
 
-  <div class="col s12 m3 l3 nav-sidebar"> <!-- Note that "m4 l3" was added -->
+  <div class="col s12 m3 l3 nav-sidebar">
+    <!-- Note that "m4 l3" was added -->
     <!-- Grey navigation panel
 
           This content will be:
       3-columns-wide on large screens,
       4-columns-wide on medium screens,
       12-columns-wide on small screens  -->
-   
-      <ul class="collapsible">
-          <li>
-            <div class="collapsible-header">
-              <i class="material-icons">check_box</i>
-              Task List
-            </div>
-            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-          </li>
-          <li>
-            <div class="collapsible-header">
-              <i class="material-icons">person</i>
-              Users
-             </div>
-            <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-          </li>
-          <li>
-              <div class="collapsible-header">
-                <i class="material-icons">settings</i>
-                Settings
-               </div>
-              <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-            </li>
-        </ul>
-      
+
+    <ul class="collapsible">
+      <li (click)=navToTask()>
+        <div class="collapsible-header">
+          <i class="material-icons">check_box</i>
+          Task List
+        </div>
+        <div class="collapsible-body">
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+      </li>
+      <li (click)="navToUsers()"> 
+        <div class="collapsible-header">
+          <i class="material-icons">person</i> 
+          Users
+        </div>
+        <div class="collapsible-body">
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+      </li>
+      <li (click)="navToSettings()">
+        <div class="collapsible-header">
+          <i class="material-icons">settings</i>
+          Settings
+        </div>
+        <div class="collapsible-body">
+          <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+      </li>
+    </ul>
+
 
   </div>
 
-  <div class="col s12 m9 l9"> <!-- Note that "m8 l9" was added -->
+  <div class="col s12 m9 l9">
+    <!-- Note that "m8 l9" was added -->
     <!-- Teal page content
 
           This content will be:
       9-columns-wide on large screens,
       8-columns-wide on medium screens,
       12-columns-wide on small screens  -->
-      Content
+
+   
+    <router-outlet></router-outlet>
 
   </div>
 
