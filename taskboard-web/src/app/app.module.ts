@@ -33,6 +33,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { UsersComponent } from './users/users.component';
 import { SettingsComponent } from './settings/settings.component';
 import { PageStateService } from './services/page-state.service';
+import { CreateTaskComponent } from './create-task/create-task.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { PageStateService } from './services/page-state.service';
     DashboardComponent,
     TaskListComponent,
     UsersComponent,
-    SettingsComponent
+    SettingsComponent,
+    CreateTaskComponent
   ],
   imports: [
     BrowserModule,
