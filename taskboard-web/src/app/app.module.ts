@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -14,6 +14,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material';
+import {MatSelectModule} from '@angular/material/select';
 
 
 import { LoginComponent } from './login/login.component';
@@ -33,7 +38,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { UsersComponent } from './users/users.component';
 import { SettingsComponent } from './settings/settings.component';
 import { PageStateService } from './services/page-state.service';
-import { CreateTaskComponent } from './create-task/create-task.component';
+import { CreateTaskComponent} from './create-task/create-task.component';
 
 
 @NgModule({
@@ -63,7 +68,14 @@ import { CreateTaskComponent } from './create-task/create-task.component';
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatSelectModule
+    
   ],
   providers: [AuthGuard,AuthService,PageStateService],
   bootstrap: [AppComponent]
