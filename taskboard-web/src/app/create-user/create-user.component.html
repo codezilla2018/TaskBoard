@@ -1,3 +1,77 @@
-<p>
-  create-user works!
-</p>
+<mat-card class="example-card">
+  <mat-card-header>
+
+    <mat-card-title>
+      Create a new User
+    </mat-card-title>
+
+  </mat-card-header>
+
+  <mat-card-content>
+
+  
+    
+
+   
+
+    
+
+
+
+
+
+
+
+
+
+    <mat-grid-list cols="2" rowHeight="5:1">
+      <mat-grid-tile>
+        <div class="example-container">
+          <mat-form-field >
+            <input matInput placeholder="First Name">
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="example-container">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Last Name">
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="3" rowHeight="5:1">
+      <mat-grid-tile>
+        <div class="example-container">
+          <mat-form-field>
+            <input matInput placeholder="Email">
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <input type="text" placeholder="Select Role" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field class="example-full-width">
+          <mat-select placeholder="Select Gender">
+            <mat-option *ngFor="let food of options" [value]="food">
+              {{ food }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  </mat-card-content>
+  <mat-card-actions class="create-button-group">
+    <button mat-raised-button class="create_task_btn" (click)="createTask()">Create User</button>
+  </mat-card-actions>
+</mat-card>
