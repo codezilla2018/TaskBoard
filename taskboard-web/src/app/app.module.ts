@@ -39,6 +39,7 @@ import { UsersComponent } from './users/users.component';
 import { SettingsComponent } from './settings/settings.component';
 import { PageStateService } from './services/page-state.service';
 import { CreateTaskComponent} from './create-task/create-task.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { CreateTaskComponent} from './create-task/create-task.component';
     TaskListComponent,
     UsersComponent,
     SettingsComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,
