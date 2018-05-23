@@ -11,7 +11,7 @@ import { AuthService } from '../services/auth.service';
 export class DashboardComponent implements OnInit {
 
   constructor(public afAuth: AuthService, private router: Router,public pg:PageStateService) { }
-
+  showFiller = false;
   ngOnInit() {
   }
   signOut() {
@@ -24,7 +24,6 @@ export class DashboardComponent implements OnInit {
     this.pg.setPage("tasks")
     console.log(this.pg.getPage());
     this.router.navigate(['/dashboard']);
-   
   }
 
   navToUsers(){
@@ -38,5 +37,8 @@ export class DashboardComponent implements OnInit {
     console.log(this.pg.getPage());
     this.router.navigate(['/dashboard/settings']);
   }
+
+ 
+
   
 }

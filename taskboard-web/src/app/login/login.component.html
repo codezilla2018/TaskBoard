@@ -1,4 +1,4 @@
-<div class="row">
+<!--<div class="row">
   <form class="col s12">
     <div class="row">
       <div class="input-field col s12">
@@ -15,4 +15,36 @@
     <a class="waves-effect waves-light btn" (click)="login()">Login</a>
    
   </form>
+</div>-->
+
+
+
+
+
+<div class="test-container">
+  <mat-grid-list cols="2" gutterSize="0px" class="bg-layout">
+    <mat-grid-tile class="bg">
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+
+      <div class="example-container">
+
+        <h1 align="center" class="mat-display-3 heading">Task Board</h1>
+        <section class="mat-typography">
+          <h1 align="center" class="subheading">Login to continue</h1>
+        </section>
+        <mat-form-field>
+          <input matInput placeholder="User Name" id="email" type="email" class="validate" name="something"[(ngModel)]="account.email">
+
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Password"id="password" type="password" class="validate"name="something" [(ngModel)]="account.password">
+
+        </mat-form-field>
+        <button mat-raised-button class="login-button" (click)="login()">Login</button>
+      </div>
+    </mat-grid-tile>
+
+  </mat-grid-list>
 </div>

@@ -6,6 +6,8 @@ import { Account } from '../models/ account/ account.interface';
 import { LoginResponse } from '../models/login/login-response.interface';
 import { AuthService } from '../services/auth.service';
 
+import {FormControl, Validators} from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',

@@ -1,4 +1,5 @@
 <!-- Navbar goes here -->
+<!--
 <nav>
   <div class="nav-wrapper blue-grey darken-4">
     <a href="#!" class="brand-logo">
@@ -25,6 +26,7 @@
 </ul>
 
 <!-- Page Layout here -->
+<!---
 <div class="row">
 
   <div class="col s12 m3 l3 nav-sidebar">
@@ -35,7 +37,7 @@
       3-columns-wide on large screens,
       4-columns-wide on medium screens,
       12-columns-wide on small screens  -->
-
+<!--
     <ul class="collapsible">
       <li (click)=navToTask()>
         <div class="collapsible-header">
@@ -77,10 +79,50 @@
       9-columns-wide on large screens,
       8-columns-wide on medium screens,
       12-columns-wide on small screens  -->
-
+<!--
    
     <router-outlet></router-outlet>
 
   </div>
 
 </div>
+
+-->
+
+<mat-toolbar class="toolbar">
+  <mat-toolbar-row>
+      <button mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+    <span>Task Board</span>
+
+    <span class="example-spacer"></span>
+    
+    <button mat-button (click)="signOut()">
+        <mat-icon class="example-icon" >exit_to_app</mat-icon>Logout</button>
+  
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container"  autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+     
+        <mat-list>
+            <mat-list-item >  <mat-icon class="example-icon">check_box</mat-icon>
+                <button mat-button (click)=navToTask()>Tasks</button>
+
+            </mat-list-item>
+            <mat-list-item (click)="navToUsers()"> 
+                <mat-icon class="example-icon">person</mat-icon>
+                <button mat-button>Users</button>
+
+            </mat-list-item>
+            <mat-list-item (click)="navToSettings()"> 
+                <mat-icon class="example-icon">settings</mat-icon>
+                <button mat-button>Settings</button>
+
+            </mat-list-item>
+           </mat-list>
+    </mat-drawer>
+    <router-outlet></router-outlet>
+   
+  
+  </mat-drawer-container>
