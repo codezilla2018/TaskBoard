@@ -1,5 +1,6 @@
 .example-card {
   margin: 20px;
+  padding-bottom: 40px;
 }
 
 .example-header-image {
@@ -24,6 +25,16 @@
   }
   
   .example-full-width {
-    width: 100%;
+    width: 90%;
   }
   
+  .create_task_btn{
+
+    background:#27ae60;
+    color: whitesmoke;
+  }
+
+  .create-button-group{
+      margin-left: 0px;
+      padding-top:0px;
+  }
