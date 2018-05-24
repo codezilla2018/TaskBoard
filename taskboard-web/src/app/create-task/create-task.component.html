@@ -63,4 +63,35 @@
   </mat-card>
 
   
+  <mat-card class="example-card">
+      <mat-card-header>
+      
+          <mat-card-title>
+           Task List
+          </mat-card-title>
+          </mat-card-header>
+      <mat-accordion *ngFor="let user of users ">
+          <mat-expansion-panel (opened)="panelOpenState = true"
+                               (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{user.firstName}}  {{user.lastName}} 
+              </mat-panel-title>
+              <mat-panel-description>
+               
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            
+            <mat-list *ngFor="let task of user.tasks">
+                <mat-list-item> <mat-icon matListIcon>folder</mat-icon>Task : {{task.name}} </mat-list-item>
+                <mat-list-item> <mat-icon matListIcon>date_range</mat-icon>Due Date : {{task.date}} </mat-list-item>
+                <mat-list-item> <mat-icon matListIcon>access_time</mat-icon>Duration : {{task.duration}}
+                  <mat-divider></mat-divider></mat-list-item>
+                
+               </mat-list>
+          </mat-expansion-panel>
+        </mat-accordion>
+  </mat-card>
+
   
+    

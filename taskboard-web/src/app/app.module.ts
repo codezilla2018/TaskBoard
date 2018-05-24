@@ -20,6 +20,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 import { LoginComponent } from './login/login.component';
@@ -42,6 +43,7 @@ import { PageStateService } from './services/page-state.service';
 import { CreateTaskComponent} from './create-task/create-task.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { UserServiceService } from './services/user-service.service';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -79,7 +81,9 @@ import { UserServiceService } from './services/user-service.service';
     MatNativeDateModule,
     MatDatepickerModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatDividerModule
     
   ],
   providers: [AuthGuard,AuthService,PageStateService,UserServiceService],
