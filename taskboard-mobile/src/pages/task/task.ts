@@ -28,6 +28,7 @@ import { Account } from '../../models/ account/ account.interface';
 export class TaskPage {
   accoutData: Account;
   userItemRef$: AngularFireList<UserI>
+  userUpdateRef: AngularFireObject<UserI>
   userList=[] as UserI[];
   taskList=[] as TaskI[];
   url = 'https://taskboard-fcee7.firebaseio.com/db.json';
@@ -71,6 +72,23 @@ export class TaskPage {
 
   }
 
+  updateStatusStart(s:TaskI){
+    console.log('update status')
+    console.log(s);
+    s.status = 'In Progress'
+  }
+
+  updateStatusStop(s:TaskI){
+    console.log('update status')
+    console.log(s);
+    s.status = 'Stop'
+  }
+
+  updateStatusComplete(s:TaskI){
+    console.log('update status')
+    console.log(s);
+    s.status = 'Complete'
+  }
 
 
 }
