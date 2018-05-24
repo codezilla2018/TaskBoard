@@ -46,9 +46,9 @@
         </mat-grid-tile>
         <mat-grid-tile>
             <mat-form-field class="example-full-width">
-                <mat-select placeholder="Select the Time Weight" [(ngModel)]="task.duration" name="food">
-                  <mat-option *ngFor="let food of foods" [value]="food.value">
-                    {{food.viewValue}}
+                <mat-select placeholder="Select the Time Duration in hours" [(ngModel)]="task.duration" name="d">
+                  <mat-option *ngFor="let d of durations" [value]="d">
+                    {{d}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>

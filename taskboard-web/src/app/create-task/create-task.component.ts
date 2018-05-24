@@ -1,3 +1,4 @@
+import { durationsList } from './../data/durations.data';
 import { UserI } from './../models/user/user.interface';
 import { TaskI } from './../models/task/task.interface';
 import { Component, OnInit } from '@angular/core';
@@ -31,7 +32,7 @@ export class CreateTaskComponent implements OnInit {
   myControl: FormControl = new FormControl();
 
   options=[];
-
+durations = durationsList;
 
   filteredOptions: Observable<string[]>;
   ngOnInit() {
@@ -67,7 +68,7 @@ export class CreateTaskComponent implements OnInit {
 
   selectedValue: string;
 
-  users = [] as User[];
+  users = [] as UserI[];
 
   getCurrentDate(dt: Date): string {
     let today = Date();
