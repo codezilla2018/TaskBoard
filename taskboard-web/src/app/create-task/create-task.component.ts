@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material';
 
 import { AngularFireDatabase, AngularFireList, AngularFireObject, } from 'angularfire2/database';
 import { FirebaseListObservable, FirebaseObjectObservable } from "angularfire2/database-deprecated";
@@ -23,7 +24,7 @@ export class CreateTaskComponent implements OnInit {
   userItemRef$: AngularFireList<UserI>
   userUpdateRef: AngularFireObject<UserI>
 
-  constructor(private database: AngularFireDatabase, public userService: UserServiceService) {
+  constructor(public snackBar: MatSnackBar,private database: AngularFireDatabase, public userService: UserServiceService) {
     this.taskItemRef$ = this.database.list('/db/tasks/');
     this.userItemRef$ = this.database.list('/db/users/');
    
@@ -173,11 +174,24 @@ export class CreateTaskComponent implements OnInit {
     this.userUpdateRef = this.database.object(`/db/users/${uid}`);
   }
 
+ clean(){
+  this.task.user = '';
+  this.task.name='';
+  this.task.date = ''
+  this.task.duration=''
+
+  console.log('after clean ',this.task);
+ }
+
   createTask() {
 
     console.log('add task');
     //console.log(this.task);
     this.task.date = this.getCurrentDate(this.task.date);
+
+   
+
+
 
     let nameSplit = this.task.user.split(" ");
     console.log('name split :',nameSplit);
@@ -193,19 +207,29 @@ export class CreateTaskComponent implements OnInit {
           this.users[i].tasks.push(this.task);
           this.userUpdateRef = this.database.object(`/db/users/${this.users[i].uid}`);
           this.userUpdateRef.update(this.users[i]);
+          this.clean();
+          this.snackBar.open('Task Created Sucessfully', 'Ok', {
+            duration: 2000,
+          });
+         
 
         }else {
           this.task.status = 'Pending'
           this.users[i].tasks.push(this.task);
           this.userUpdateRef = this.database.object(`/db/users/${this.users[i].uid}`);
           this.userUpdateRef.update(this.users[i]);
+          this.clean();
+          this.snackBar.open('Task Created Sucessfully', 'Ok', {
+            duration: 2000,
+          });
+         
         }
        // this.users[i].tasks.push(this.task);
       }
     }
     
 
-
+  
 
     console.log('task object',this.task);
     console.log('user object', this.users);
