@@ -35,9 +35,9 @@ export class TaskPage {
     //const tt = this.af.auth.currentUser.email;
     //  console.log('current user email',tt)
 
-    //let email = this.accoutData.email;
+    let email = this.accoutData.email;
 
-    let email = 'dhanuka@gmail.com';
+   // let email = 'dhanuka@gmail.com';
     this.userItemRef$.valueChanges().subscribe(s => {
       console.log(s);
       this.userList =s;
