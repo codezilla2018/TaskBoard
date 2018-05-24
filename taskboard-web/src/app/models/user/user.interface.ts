@@ -1,3 +1,4 @@
+import { TaskI } from './../task/task.interface';
 export interface UserI{
     $key?: string;
     firstName?:string,
@@ -5,5 +6,6 @@ export interface UserI{
     email?:string
     role?:string,
     gender?:string,
-    uid?:string
+    uid?:string,
+    tasks?:TaskI[]
 }

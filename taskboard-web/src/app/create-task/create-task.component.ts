@@ -56,7 +56,9 @@ export class CreateTaskComponent implements OnInit {
         for (let i = 0; i < arr.length; i++) {
          
           this.users[i].uid = arr[i];
+         
         }
+
   
       })
 
@@ -162,7 +164,21 @@ export class CreateTaskComponent implements OnInit {
 
     let nameSplit = this.task.user.split(" ");
     console.log('name split :',nameSplit);
-    console.log('uid of current user : ',this.findUid(nameSplit[0],nameSplit[1]));
+    let current_uid = this.findUid(nameSplit[0],nameSplit[1]);
+    
+    for(let i=0;i<this.users.length; i++){
+      if(this.users[i].uid == current_uid){
+        console.log('i am going to push',this.task);
+        console.log('ddddddddd',this.users[i].tasks);
+        if(this.users[i].tasks === undefined ){
+          this.users[i].tasks = [];
+          this.users[i].tasks.push(this.task);
+        }else {
+          this.users[i].tasks.push(this.task);
+        }
+       // this.users[i].tasks.push(this.task);
+      }
+    }
     
 
     console.log('task object',this.task);
