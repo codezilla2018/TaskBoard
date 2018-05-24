@@ -6,8 +6,8 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
-import { AngularFireDatabase, AngularFireList ,AngularFireObject} from 'angularfire2/database';
-import { FirebaseListObservable ,FirebaseObjectObservable} from "angularfire2/database-deprecated";
+import { AngularFireDatabase, AngularFireList, AngularFireObject, } from 'angularfire2/database';
+import { FirebaseListObservable, FirebaseObjectObservable } from "angularfire2/database-deprecated";
 import { UserServiceService } from '../services/user-service.service';
 
 
@@ -26,34 +26,58 @@ export class CreateTaskComponent implements OnInit {
     this.taskItemRef$ = this.database.list('/db/tasks/');
     this.userItemRef$ = this.database.list('/db/users/');
 
-  
 
   }
   myControl: FormControl = new FormControl();
 
-  options=[];
-durations = durationsList;
+  options = [];
+  durations = durationsList;
 
   filteredOptions: Observable<string[]>;
   ngOnInit() {
-     this.userItemRef$.valueChanges().subscribe(res =>{
-     
+
+    this.userItemRef$.valueChanges().subscribe(res => {
+
       this.users = res;
       console.log(this.users);
-      for(let i = 0 ; i <res.length; i++){
+      for (let i = 0; i < res.length; i++) {
         let name = this.users[i].firstName + " " + this.users[i].lastName;
         this.options.push(name);
+
       }
-      this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(val => this.filter(val))
-      );
-    });
-   
-    console.log('user op',this.options);
+      let arr = [];
+
+      this.userItemRef$.snapshotChanges().subscribe(s => {
+        console.log('dd', s.map(sp => {
+          console.log('k', sp.key);
+          arr.push(sp.key);
+        }))
+        console.log('sss', arr);
+        for (let i = 0; i < arr.length; i++) {
+         
+          this.users[i].uid = arr[i];
+        }
+  
+      })
+
+      
 
     
+      this.filteredOptions = this.myControl.valueChanges
+        .pipe(
+          startWith(''),
+          map(val => this.filter(val))
+        );
+    });
+
+
+
+
+
+
+
+
+
   }
   filter(val: string): string[] {
     return this.options.filter(option =>
@@ -119,12 +143,14 @@ durations = durationsList;
     return y + '-' + m + '-' + d;
   }
   createTask() {
+
     console.log('add task');
     console.log(this.task);
     this.task.date = this.getCurrentDate(this.task.date);
 
     console.log(this.task);
-    this.taskItemRef$.push(this.task);
+    console.log('user object', this.users);
+    //this.taskItemRef$.push(this.task);
     //this.task = {} as TaskI;
   }
 }
