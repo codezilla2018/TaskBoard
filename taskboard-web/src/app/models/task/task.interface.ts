@@ -3,5 +3,6 @@ export interface TaskI{
     name?:string,
     user?:string,
     date?:any,
-    duration?:string
+    duration?:string,
+    status?:string
 }

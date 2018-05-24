@@ -188,11 +188,13 @@ export class CreateTaskComponent implements OnInit {
         console.log('ddddddddd',this.users[i].tasks);
         if(this.users[i].tasks === undefined ){
           this.users[i].tasks = [];
+          this.task.status = 'Pending'
           this.users[i].tasks.push(this.task);
           this.userUpdateRef = this.database.object(`/db/users/${this.users[i].uid}`);
           this.userUpdateRef.update(this.users[i]);
 
         }else {
+          this.task.status = 'Pending'
           this.users[i].tasks.push(this.task);
           this.userUpdateRef = this.database.object(`/db/users/${this.users[i].uid}`);
           this.userUpdateRef.update(this.users[i]);
