@@ -4,18 +4,19 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>LoginPage</ion-title>
-  </ion-navbar>
-
-</ion-header>
 
 
-<ion-content padding>
-  <ion-list>
 
+<ion-content style="background-color: whitesmoke">
+<div style="padding: 5%;">
+    <h1 style="font-family: 'Righteous', cursive; text-align: center;  font-size: 8vh">Task Board</h1>
+</div>
+ 
+    <ion-img style=" background-size: cover; width: 100%; height: 38%; " src="assets/imgs/login_bg.jpg"></ion-img>
+
+  <ion-list style="margin:7%">
+
+    <h1 style="font-family: 'Cairo', sans-serif; text-align: center;margin-bottom: 10%">Login to continue</h1>
     <ion-item>
       <ion-label>Username</ion-label>
       <ion-input type="text"></ion-input>
@@ -25,10 +26,10 @@
       <ion-label>Password</ion-label>
       <ion-input type="password"></ion-input>
     </ion-item>
-  
+    <div style="margin-top: 2.4vh" >
+        <button ion-button full (click)="navigateToTaskPage()">Sign In</button>
+      </div>
   </ion-list>
   
-  <div padding>
-    <button ion-button (click)="navigateToTaskPage()">Sign In</button>
-  </div>
+ 
 </ion-content>
