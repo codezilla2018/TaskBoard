@@ -21,10 +21,12 @@ export class CreateTaskComponent implements OnInit {
   task = {} as TaskI;
   taskItemRef$: AngularFireList<TaskI>;
   userItemRef$: AngularFireList<UserI>
+  userUpdateRef: AngularFireObject<UserI>
 
   constructor(private database: AngularFireDatabase, public userService: UserServiceService) {
     this.taskItemRef$ = this.database.list('/db/tasks/');
     this.userItemRef$ = this.database.list('/db/users/');
+   
 
 
   }
@@ -39,6 +41,7 @@ export class CreateTaskComponent implements OnInit {
     this.userItemRef$.valueChanges().subscribe(res => {
 
       this.users = res;
+      
       console.log(this.users);
       for (let i = 0; i < res.length; i++) {
         let name = this.users[i].firstName + " " + this.users[i].lastName;
@@ -53,9 +56,18 @@ export class CreateTaskComponent implements OnInit {
           arr.push(sp.key);
         }))
         console.log('sss', arr);
+        
         for (let i = 0; i < arr.length; i++) {
-         
+          console.log('trace check -- >',this.users[i].uid);
+         if(this.users[i].uid === undefined){
+           console.log('uid trobule on');
+           this.users[i].uid = '';
+           this.users[i].uid = arr[i];
+         }else{
+          console.log('uid trobule off');
           this.users[i].uid = arr[i];
+         }
+         
          
         }
 
@@ -156,6 +168,10 @@ export class CreateTaskComponent implements OnInit {
 
   }
 
+  updateUser(uid:string){
+    this.userUpdateRef = this.database.object(`/db/users/${uid}`);
+  }
+
   createTask() {
 
     console.log('add task');
@@ -173,13 +189,20 @@ export class CreateTaskComponent implements OnInit {
         if(this.users[i].tasks === undefined ){
           this.users[i].tasks = [];
           this.users[i].tasks.push(this.task);
+          this.userUpdateRef = this.database.object(`/db/users/${this.users[i].uid}`);
+          this.userUpdateRef.update(this.users[i]);
+
         }else {
           this.users[i].tasks.push(this.task);
+          this.userUpdateRef = this.database.object(`/db/users/${this.users[i].uid}`);
+          this.userUpdateRef.update(this.users[i]);
         }
        // this.users[i].tasks.push(this.task);
       }
     }
     
+
+
 
     console.log('task object',this.task);
     console.log('user object', this.users);
