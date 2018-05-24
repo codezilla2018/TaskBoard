@@ -1,12 +1,46 @@
 <ion-header>
 
-        <ion-navbar color=primary>
-          <ion-title>Task Board</ion-title>
-        </ion-navbar>
-      
-      </ion-header>
-      <ion-content>
-          <ion-list>
-              dds
-          </ion-list>
-      </ion-content>
+    <ion-navbar color=primary>
+        <ion-title>Task Board</ion-title>
+    </ion-navbar>
+
+</ion-header>
+<ion-content>
+    <ion-card *ngFor="let task of taskList "> 
+
+        <ion-card-header>
+            Task : {{task.name}}
+        </ion-card-header>
+
+        <ion-card-content>
+
+            <ion-list>
+                <ion-item>
+                    <ion-icon name="ios-calendar" item-start></ion-icon>
+                    Due Date
+                    <ion-note item-end  color=primary>
+                            {{task.date}}
+                    </ion-note>
+                </ion-item>
+                <ion-item>
+                        <ion-icon name="ios-time" item-start></ion-icon>
+                        Duration
+                        <ion-note item-end color=primary>
+                                {{task.duration}}
+                        </ion-note>
+                    </ion-item>
+                    <ion-item>
+                            <ion-icon name="ios-trending-up-outline" item-start></ion-icon>
+                            Status
+                            <ion-note item-end color=primary>
+                                    {{task.status}}
+                            </ion-note>
+                        </ion-item>
+            </ion-list>
+            <button style="text-transform: none"  ion-button>Start</button>
+            <button ion-button color="danger" style="text-transform: none" ion-button>Stop</button>
+            <button color="secondary"  style="text-transform: none" ion-button>Complete</button>
+        </ion-card-content>
+
+    </ion-card>
+</ion-content>

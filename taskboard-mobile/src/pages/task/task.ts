@@ -1,3 +1,4 @@
+import { TaskI } from '../../models/task/task.interface';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
@@ -27,7 +28,8 @@ import { Account } from '../../models/ account/ account.interface';
 export class TaskPage {
   accoutData: Account;
   userItemRef$: AngularFireList<UserI>
-  userList: UserI[];
+  userList=[] as UserI[];
+  taskList=[] as TaskI[];
   url = 'https://taskboard-fcee7.firebaseio.com/db.json';
   constructor(private http: Http, private database: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
     this.accoutData = this.navParams.get('accoutData');
@@ -35,10 +37,21 @@ export class TaskPage {
     //const tt = this.af.auth.currentUser.email;
     //  console.log('current user email',tt)
 
-    
+    let email = 'dhanuka@gmail.com';
 
     this.userItemRef$.valueChanges().subscribe(s => {
       console.log(s);
+      this.userList =s;
+
+      console.log(this.userList.length)
+
+      for(let i=0 ; i<this.userList.length;i++){
+        if(this.userList[i].email == email){
+          console.log('users task',this.userList[i].tasks)
+          this.taskList = this.userList[i].tasks;
+        }
+      }
+
     })
   }
 
