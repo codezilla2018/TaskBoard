@@ -4,5 +4,6 @@ export interface UserI{
     lastName?:string,
     email?:string
     role?:string,
-    gender?:string
+    gender?:string,
+    uid?:string
 }
