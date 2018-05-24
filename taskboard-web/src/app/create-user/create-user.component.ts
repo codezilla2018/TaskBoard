@@ -1,3 +1,5 @@
+import { rolesList } from './../data/role.data';
+import { genderList } from './../data/gender.data';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -21,12 +23,9 @@ export class CreateUserComponent implements OnInit {
   }
   myControl: FormControl = new FormControl();
 
-  options = [
-    'One',
-    'Two',
-    'Three'
-  ];
+  options = rolesList;
 
+  gender = genderList;
   filteredOptions: Observable<string[]>;
 
  
