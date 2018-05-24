@@ -40,6 +40,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { PageStateService } from './services/page-state.service';
 import { CreateTaskComponent} from './create-task/create-task.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { UserServiceService } from './services/user-service.service';
 
 
 @NgModule({
@@ -79,7 +80,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
     MatSelectModule
     
   ],
-  providers: [AuthGuard,AuthService,PageStateService],
+  providers: [AuthGuard,AuthService,PageStateService,UserServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
