@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Account} from '../../models/ account/ account.interface';
@@ -16,7 +17,7 @@ import { AuthProvider} from '../../providers/auth/auth';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  account ={} as Account;
+  account = {} as Account;
   constructor(private afAuth:AuthProvider,public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -27,7 +28,7 @@ export class LoginPage {
   async signIn(){
     console.log(this.account);
 
-    //this.account.email = 'dhanuka@gmail.com';
+    
 
     const loginResponse=await this.afAuth.signInWithEmailAndPassword(this.account); 
 
