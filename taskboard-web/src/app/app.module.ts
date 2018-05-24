@@ -19,6 +19,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 import { LoginComponent } from './login/login.component';
@@ -77,7 +78,8 @@ import { UserServiceService } from './services/user-service.service';
     ReactiveFormsModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
     
   ],
   providers: [AuthGuard,AuthService,PageStateService,UserServiceService],
