@@ -5,7 +5,26 @@
     </ion-navbar>
 
 </ion-header>
+
+
 <ion-content>
+        <ion-card *ngIf="!taskList">
+
+               
+              
+                <ion-list>
+                        
+                            <ion-item>
+                                    <ion-icon color=secondary name="ios-happy" item-start></ion-icon>
+                                    You don't have any work to do!
+                                    <ion-note item-end color=primary>
+                                          
+                                    </ion-note>
+                                </ion-item>
+                    </ion-list>
+              
+              </ion-card>
+              
     <ion-card *ngFor="let task of taskList "> 
 
         <ion-card-header>

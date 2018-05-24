@@ -44,14 +44,18 @@ export class TaskPage {
       console.log(s);
       this.userList =s;
 
-      console.log(this.userList.length)
+      if(s.length > 0){
+        console.log(this.userList.length)
 
-      for(let i=0 ; i<this.userList.length;i++){
-        if(this.userList[i].email == email){
-          console.log('users task',this.userList[i].tasks)
-          this.taskList = this.userList[i].tasks;
+        for(let i=0 ; i<this.userList.length;i++){
+          if(this.userList[i].email == email){
+            console.log('users task',this.userList[i].tasks)
+            this.taskList = this.userList[i].tasks;
+          }
         }
       }
+
+  
 
     })
   }
