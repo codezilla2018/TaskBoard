@@ -8,28 +8,28 @@
 
 
 <ion-content style="background-color: whitesmoke">
-<div style="padding: 5%;">
+  <div style="padding: 5%;">
     <h1 style="font-family: 'Righteous', cursive; text-align: center;  font-size: 8vh">Task Board</h1>
-</div>
- 
-    <ion-img style=" background-size: cover; width: 100%; height: 38%; " src="assets/imgs/login_bg.jpg"></ion-img>
+  </div>
+
+  <ion-img style=" background-size: cover; width: 100%; height: 38%; " src="assets/imgs/login_bg.jpg"></ion-img>
 
   <ion-list style="margin:7%">
 
     <h1 style="font-family: 'Cairo', sans-serif; text-align: center;margin-bottom: 10%">Login to continue</h1>
     <ion-item>
       <ion-label>Username</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="email" required [(ngModel)]="account.username"></ion-input>
     </ion-item>
-  
+
     <ion-item>
       <ion-label>Password</ion-label>
-      <ion-input type="password"></ion-input>
+      <ion-input type="password" required [(ngModel)]="account.password"></ion-input>
     </ion-item>
-    <div style="margin-top: 2.4vh" >
-        <button ion-button full (click)="navigateToTaskPage()">Sign In</button>
-      </div>
+    <div style="margin-top: 2.4vh">
+      <button ion-button full (click)="signIn()">Sign In</button>
+    </div>
   </ion-list>
-  
- 
+
+
 </ion-content>

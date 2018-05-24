@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Account} from '../../models/ account/ account.interface';
+import { AuthProvider} from '../../providers/auth/auth';
 
 /**
  * Generated class for the LoginPage page.
@@ -14,14 +16,30 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  account ={} as Account;
+  constructor(private afAuth:AuthProvider,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
+  async signIn(){
+    console.log(this.account);
+
+    //this.account.email = 'dhanuka@gmail.com';
+
+    const loginResponse=await this.afAuth.signInWithEmailAndPassword(this.account); 
+
+    
+    console.log(loginResponse);
+
+    if(!loginResponse.error){
+      this.navigateToTaskPage();
+    }
+
+
+  }
   navigateToTaskPage(){
     this.navCtrl.push('TaskPage');
   }
