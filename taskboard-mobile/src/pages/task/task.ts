@@ -5,12 +5,9 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angular
 import { UserI } from '../../models/user/user.interface';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import {
-  Http,
-  Response,
-  Jsonp,
-  URLSearchParams
-} from '@angular/http';
+import { ToastController } from 'ionic-angular';
+
+
 import { Account } from '../../models/ account/ account.interface';
 
 /**
@@ -31,15 +28,16 @@ export class TaskPage {
   userUpdateRef: AngularFireObject<UserI>
   userList=[] as UserI[];
   taskList=[] as TaskI[];
-  url = 'https://taskboard-fcee7.firebaseio.com/db.json';
-  constructor(private http: Http, private database: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
+  
+  constructor(private toastCtrl: ToastController,private database: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
     this.accoutData = this.navParams.get('accoutData');
     this.userItemRef$ = this.database.list('/db/users/');
     //const tt = this.af.auth.currentUser.email;
     //  console.log('current user email',tt)
 
-    let email = 'dhanuka@gmail.com';
+    //let email = this.accoutData.email;
 
+    let email = 'dhanuka@gmail.com';
     this.userItemRef$.valueChanges().subscribe(s => {
       console.log(s);
       this.userList =s;
@@ -60,6 +58,7 @@ export class TaskPage {
     })
   }
 
+  
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TaskPage');
@@ -72,6 +71,7 @@ export class TaskPage {
         console.log(this.userList[i].tasks);
       }
     }*/
+   
 
 
   }
@@ -80,18 +80,37 @@ export class TaskPage {
     console.log('update status')
     console.log(s);
     s.status = 'In Progress'
+
+    let toast = this.toastCtrl.create({
+      message: 'Task set to Pending',
+      duration: 2500,
+      position: 'bottom'
+    })
+    toast.present();
   }
 
   updateStatusStop(s:TaskI){
     console.log('update status')
     console.log(s);
     s.status = 'Stop'
+    let toast = this.toastCtrl.create({
+      message: 'Task set to Stop',
+      duration: 2500,
+      position: 'bottom'
+    })
+    toast.present();
   }
 
   updateStatusComplete(s:TaskI){
     console.log('update status')
     console.log(s);
     s.status = 'Complete'
+    let toast = this.toastCtrl.create({
+      message: 'Task set to Complete',
+      duration: 2500,
+      position: 'bottom'
+    })
+    toast.present();
   }
 
 
