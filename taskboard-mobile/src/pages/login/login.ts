@@ -36,7 +36,10 @@ export class LoginPage {
     console.log(loginResponse);
 
     if(!loginResponse.error){
-      this.navigateToTaskPage();
+      
+      //this.navParams.data()
+      //this.navCtrl.push('TaskPage',{'accoutData':this.account});
+      this.navCtrl.setRoot('TaskPage',{'accoutData':this.account});
     }
 
 
