@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material';
 
 import { AngularFireDatabase ,AngularFireList} from 'angularfire2/database';
 import { FirebaseListObservable } from "angularfire2/database-deprecated";
@@ -25,7 +26,7 @@ export class CreateUserComponent implements OnInit {
   user = {} as UserI;
  userRef$: AngularFireList<UserI>;
 
-  constructor(private database: AngularFireDatabase,public af:AuthService) {
+  constructor(public snackBar: MatSnackBar,private database: AngularFireDatabase,public af:AuthService) {
     this.userRef$ = this.database.list('/db/users/');
    }
   
@@ -67,9 +68,17 @@ export class CreateUserComponent implements OnInit {
       console.log('User created sucessfully');
       console.log(loginResponse.result.uid);
       this.userRef$.push(this.user);
+      this.snackBar.open('User Created Sucessfully', 'Ok', {
+        duration: 2000,
+      });
+
+      this.user = {};
 
     }else{
       console.log('user creation fail');
+      this.snackBar.open('User creation Fail', 'Ok', {
+        duration: 2000,
+      });
     }
   
     
@@ -82,6 +91,9 @@ export class CreateUserComponent implements OnInit {
     this.account.email = this.user.email;
     this.account.password = defaultPassword;
     this.af.createUserWithEmailAndPassword(this.account);
+    this.snackBar.open('User Created Sucessfully', 'Ok', {
+      duration: 2000,
+    });
   }
 
 
