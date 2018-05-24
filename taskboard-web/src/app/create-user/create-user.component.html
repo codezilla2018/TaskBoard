@@ -12,14 +12,14 @@
       <mat-grid-tile>
         <div class="example-container">
           <mat-form-field >
-            <input matInput placeholder="First Name">
+            <input matInput placeholder="First Name" [(ngModel)]="user.firstName">
           </mat-form-field>
         </div>
       </mat-grid-tile>
       <mat-grid-tile>
         <div class="example-container">
           <mat-form-field class="example-full-width">
-            <input matInput placeholder="Last Name">
+            <input matInput placeholder="Last Name" [(ngModel)]="user.lastName">
           </mat-form-field>
         </div>
       </mat-grid-tile>
@@ -29,13 +29,13 @@
       <mat-grid-tile>
         <div class="example-container">
           <mat-form-field>
-            <input matInput placeholder="Email">
+            <input matInput placeholder="Email" [(ngModel)]="user.email">
           </mat-form-field>
         </div>
       </mat-grid-tile>
       <mat-grid-tile>
         <mat-form-field class="example-full-width">
-          <input type="text" placeholder="Select Role" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+          <input type="text" placeholder="Select Role" [(ngModel)]="user.role" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
           <mat-autocomplete #auto="matAutocomplete">
             <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
               {{ option }}
@@ -45,7 +45,7 @@
       </mat-grid-tile>
       <mat-grid-tile>
         <mat-form-field class="example-full-width">
-          <mat-select placeholder="Select Gender">
+          <mat-select placeholder="Select Gender" [(ngModel)]="user.gender">
             <mat-option *ngFor="let g of gender" [value]="g">
               {{ g }}
             </mat-option>
@@ -56,6 +56,6 @@
 
   </mat-card-content>
   <mat-card-actions class="create-button-group">
-    <button mat-raised-button class="create_task_btn" (click)="createTask()">Create User</button>
+    <button mat-raised-button class="create_task_btn" (click)="createUser()">Create User</button>
   </mat-card-actions>
 </mat-card>
