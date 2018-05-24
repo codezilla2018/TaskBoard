@@ -1,3 +1,4 @@
+import { defaultPassword } from './../data/password.data';
 import { element } from 'protractor';
 import { LoginResponse } from './../models/login/login-response.interface';
 import { Account } from './../models/ account/ account.interface';
@@ -79,7 +80,7 @@ export class CreateUserComponent implements OnInit {
 
   createAccount(){
     this.account.email = this.user.email;
-    this.account.password = '123456'
+    this.account.password = defaultPassword;
     this.af.createUserWithEmailAndPassword(this.account);
   }
 
